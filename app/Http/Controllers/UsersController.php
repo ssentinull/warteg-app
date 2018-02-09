@@ -11,8 +11,7 @@
 			public function add(Request $request)
 				{
 					$request['api_token'] = str_random(60);
-					// $request['password'] = app('hash')->make($request['password']);
-					// (new BcryptHasher)->make($request['password']); 
+					$request['password'] = app('hash')->make($request['password']);
 					$user = Users::create($request->all());
 
 					return response()->json($user);
@@ -22,7 +21,6 @@
 			public function view($id)
 				{
 					$post = Users::find($id);
-
 					return response()->json($post);
 				}
 
@@ -38,7 +36,7 @@
 			//method to delete an account based on the given 'id'
 			public function delete($id)
 				{
-					$post = Post::find($id);
+					$post = Users::find($id);
 					$post->delete();
 
 					return response()->json('Removed successfully.');
@@ -47,7 +45,7 @@
 			//method to display all accounts in the database
 			public function allUser()
 				{
-					$post = Post::all();
+					$post = Users::all();
 
 					return response()->json($post);
 				}
