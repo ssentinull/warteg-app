@@ -16,16 +16,14 @@
 		    // return $router->app->version();
 		});
 
-	$router->group(['prefix' => 'api/v1'], function($router)
+	$router->group(['prefix' => 'v1'], function($router)
 		{
-			$router->group(['prefix' => 'users'], function($router)
-				{
-					$router->post('add', 'UsersController@add');
-					$router->get('view/{id}', 'UsersController@view');
-					$router->put('edit/{id}', 'UsersController@edit');
-					$router->delete('delete/{id}', 'UsersController@delete');
-					$router->get('allUser', 'UsersController@allUser');
-				});
+			//Routes for CRUD method on Users object
+			$router->post('users', 'UsersController@add');
+			$router->get('users/{id}', 'UsersController@view');
+			$router->put('users/{id}', 'UsersController@edit');
+			$router->delete('users/{id}', 'UsersController@delete');
+			$router->get('users', 'UsersController@allUser');
 		});
 
 	
