@@ -4,6 +4,7 @@
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
+	use DB;
 
 	class UsersController extends Controller
 		{
@@ -20,24 +21,32 @@
 			//method to view an account based on the given 'id'
 			public function view($id)
 				{
-					$post = Users::find($id);
-					return response()->json($post);
+					$user = Users::find($id);
+					return response()->json($user);
 				}
 
 			//method to edit an account based on the given 'id'
 			public function edit(Request $request, $id)
 				{
 					$user = Users::find($id);
-					$post->update($request->all());
+					$user->update($request->all());
 
-					return response()->json($post);
+					// DB::table('users')
+		     //        ->where('id', $id)
+		     //        ->update([
+		     //        	'email' => $data['email'],
+		     //        	'nama' => $data['nama'],
+		     //        	'password' => $data['password']
+		     //        ]);
+
+					return response()->json($user);
 				}
 
 			//method to delete an account based on the given 'id'
 			public function delete($id)
 				{
-					$post = Users::find($id);
-					$post->delete();
+					$user = Users::find($id);
+					$user->delete();
 
 					return response()->json('Removed successfully.');
 				}
@@ -45,9 +54,9 @@
 			//method to display all accounts in the database
 			public function allUser()
 				{
-					$post = Users::all();
-
-					return response()->json($post);
+					// $users = Users::all();
+					$users = DB::table('users')->get();
+					return response()->json($users);
 				}
 		}
  ?>
