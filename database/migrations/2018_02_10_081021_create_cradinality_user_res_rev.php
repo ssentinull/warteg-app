@@ -13,17 +13,17 @@ class CreateCradinalityUserResRev extends Migration
      */
     public function up()
     {
-       Schema::table('reviews', function($table) 
-        {
-            $table->integer('id_user')->unsigned()->change();
-            $table->integer('id_res')->unsigned()->change();
-        });
+       // Schema::table('reviews', function($table) 
+       //  {
+       //      $table->integer('id_user')->unsigned()->change();
+       //      $table->integer('id_res')->unsigned()->change();
+       //  });
 
-       Schema::table('reviews', function($table) 
-        {
-            $table->foreign('id_user')->references('id')->on('users');
-            $table->foreign('id_res')->references('id')->on('restaurants');
-        });       
+       // Schema::table('reviews', function($table) 
+       //  {
+       //      $table->foreign('id_user')->references('id')->on('users');
+       //      $table->foreign('id_res')->references('id')->on('restaurants');
+       //  });       
     }
 
     /**

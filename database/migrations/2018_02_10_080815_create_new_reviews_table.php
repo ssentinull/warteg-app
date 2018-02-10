@@ -13,18 +13,16 @@ class CreateNewReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function(Blueprint $table)
-            {
-                $table->increments('id');
-                $table->integer('id_user');
-                $table->integer('id_res');
-                $table->date('date');
-                $table->string('review');
-                $table->double('score', 3, 1);
-                $table->timestamps();
-                // $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-                // $table->foreign('id_res')->references('id')->on('restaurans')->onDelete('cascade');
-            });
+        // Schema::create('reviews', function(Blueprint $table)
+        //     {
+        //         $table->increments('id');
+        //         $table->integer('id_user');
+        //         $table->integer('id_res');
+        //         $table->date('date');
+        //         $table->string('review');
+        //         $table->double('score', 3, 1);
+        //         $table->timestamps();
+        //     });
     }
 
     /**
