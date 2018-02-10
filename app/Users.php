@@ -23,10 +23,4 @@
          * @var array
          */
         protected $hidden = ['password', 'api_token', 'remember_token'];
-
-        //Get the user's reviews
-        public function reviews()
-        {
-            return $this->hasMany('App\Reviews', 'id_user');
-        }
     }

@@ -13,20 +13,20 @@ class CreateTableRestaurants extends Migration
      */
     public function up()
     {
-        Schema::create('restaurants', function(Blueprint $table)
-            {
-                $table->increments('id');
-                $table->string('name');
-                $table->string('road_name');
-                $table->string('cuisine_type');
-                $table->string('opening_hour');
-                $table->string('closing_hour');
-                $table->double('avg_cost');
-                $table->timestamps();
-            });
+        // Schema::create('restaurants', function(Blueprint $table)
+        //     {
+        //         $table->increments('id');
+        //         $table->string('name');
+        //         $table->string('road_name');
+        //         $table->string('cuisine_type');
+        //         $table->string('opening_hour');
+        //         $table->string('closing_hour');
+        //         $table->double('avg_cost');
+        //         $table->timestamps();
+        //     });
 
-        //statement for adding latitude and longitude to table
-        DB::statement('ALTER TABLE restaurants ADD location POINT');
+        // //statement for adding latitude and longitude to table
+        // DB::statement('ALTER TABLE restaurants ADD location POINT');
     }
 
     /**
@@ -36,6 +36,6 @@ class CreateTableRestaurants extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('restaurants');
+        // Schema::dropIfExists('restaurants');
     }
 }

@@ -13,16 +13,16 @@ class CreateTableReview extends Migration
      */
     public function up()
     {
-        Schema::create('reviews', function(Blueprint $table)
-            {
-                $table->increments('id');
-                $table->integer('id_user');
-                $table->integer('id_res');
-                $table->date('date');
-                $table->string('review');
-                $table->double('score', 3, 1);
-                $table->timestamps();
-            });
+        // Schema::create('reviews', function(Blueprint $table)
+        //     {
+        //         $table->increments('id');
+        //         $table->integer('id_user');
+        //         $table->integer('id_res');
+        //         $table->date('date');
+        //         $table->string('review');
+        //         $table->double('score', 3, 1);
+        //         $table->timestamps();
+        //     });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateTableReview extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('reviews');
+        // Schema::dropIfExists('reviews');
     }
 }

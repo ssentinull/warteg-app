@@ -23,10 +23,4 @@
          * @var array
          */
         protected $hidden = [];
-
-        //Get the user that created the comments
-        public function users()
-        {
-            return $this->belongsTo('App\Users', 'id');
-        }
     }

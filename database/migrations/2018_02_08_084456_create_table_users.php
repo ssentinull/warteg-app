@@ -13,16 +13,16 @@ class CreateTableUsers extends Migration
      */
     public function up()
     {
-        Schema::create('users', function(Blueprint $table)
-            {
-                $table->increments('id');
-                $table->string('email')->unique();
-                $table->string('name');
-                $table->string('password', 20);
-                $table->string('api_token', 60)->unique();
-                $table->rememberToken();
-                $table->timestamps();
-            });
+        // Schema::create('users', function(Blueprint $table)
+        //     {
+        //         $table->increments('id');
+        //         $table->string('email')->unique();
+        //         $table->string('name');
+        //         $table->string('password', 20);
+        //         $table->string('api_token', 60)->unique();
+        //         $table->rememberToken();
+        //         $table->timestamps();
+        //     });
     }
 
     /**
@@ -32,6 +32,6 @@ class CreateTableUsers extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        // Schema::dropIfExists('users');
     }
 }
