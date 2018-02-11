@@ -31,6 +31,13 @@
 			$router->put('restaurants/{id}', 'RestaurantsController@edit');
 			$router->delete('restaurants/{id}', 'RestaurantsController@delete');
 			$router->get('restaurants', 'RestaurantsController@allUser');
+
+			//Routes for CRUD method on Menus object
+			$router->post('menus', 'MenusController@add');
+			$router->get('menus/{id}', 'MenusController@view');
+			$router->put('menus/{id}', 'MenusController@edit');
+			$router->delete('menus/{id}', 'MenusController@delete');
+			$router->get('menus', 'MenusController@allUser');
 		});
 
 	
