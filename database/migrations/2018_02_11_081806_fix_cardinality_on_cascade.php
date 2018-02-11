@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+// use DB;
 
-class CreateCradinalityResMenu extends Migration
+class FixCardinalityOnCascade extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +14,9 @@ class CreateCradinalityResMenu extends Migration
      */
     public function up()
     {
-        // Schema::table('menus', function($table)
-        //     {
-        //         $table->integer('id_res')->unsigned()->change();
-        //         $table->foreign('id_res')->references('id')->on('restaurants');
-        //     });
+        DB::query('ALTER TABLE `menus` MODIFY `id_res` ON DELETE CASCADE;');
+        DB::query('ALTER TABLE `reviews` MODIFY `id_user` ON DELETE CASCADE;');
+        DB::query('ALTER TABLE `reviews` MODIFY `id_res` ON DELETE CASCADE;');
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php namespace App\Http\Controllers;
 
 	use App\Restaurants;
+	use App\Menus;
+	use App\Reviews;
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
@@ -35,8 +37,9 @@
 			//method to delete an restaurant based on the given 'id'
 			public function delete($id)
 				{
-					$restaurant = Restaurants::find($id);
-					$restaurant->delete();
+					Menus::where('id_res', $id)->delete();
+					Reviews::where('id_res', $id)->delete();
+					Restaurants::find($id)->delete();
 
 					return response()->json('Removed successfully.');
 				}

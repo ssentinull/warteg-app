@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers;
 
 	use App\Users;
+	use App\Reviews;
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
@@ -31,20 +32,13 @@
 					$user = Users::find($id);
 					$user->update($request->all());
 
-					// DB::table('users')
-		     //        ->where('id', $id)
-		     //        ->update([
-		     //        	'email' => $data['email'],
-		     //        	'nama' => $data['nama'],
-		     //        	'password' => $data['password']
-		     //        ]);
-
 					return response()->json($user);
 				}
 
 			//method to delete an account based on the given 'id'
 			public function delete($id)
 				{
+					Reviews::where('id_user', $id)->delete();
 					$user = Users::find($id);
 					$user->delete();
 
