@@ -21,7 +21,30 @@
 			//method to view an restaurant based on the given 'id'
 			public function view($id)
 				{
+					$score = 0;
+					$price = 0;
+
 					$restaurant = Restaurants::find($id);
+					$reviews = Reviews::where('id_res', $id)->get();
+					$menus = Menus::where('id_res', $id)->get();
+
+					foreach ($reviews as $rev) 
+						{
+							$score += $rev['score'];
+						}
+
+					foreach ($menus as $menu)
+						{
+							$price += $menu['price'];
+						}
+
+					$score = $score / count($reviews);
+					$price = $price / count($menus);
+
+					$restaurant->avg_rating = $score;
+					$restaurant->avg_cost = $price;
+					$restaurant->review = $reviews;
+
 					return response()->json($restaurant);
 				}
 

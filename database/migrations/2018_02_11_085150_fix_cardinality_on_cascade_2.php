@@ -13,8 +13,8 @@ class FixCardinalityOnCascade2 extends Migration
      */
     public function up()
     {
-        DB::query('ALTER TABLE `users` MODIFY `id` ON DELETE CASCADE;');
-        DB::query('ALTER TABLE `restaurants` MODIFY `id` ON DELETE CASCADE;');
+        // DB::query('ALTER TABLE `users` MODIFY `id` ON DELETE CASCADE;');
+        // DB::query('ALTER TABLE `restaurants` MODIFY `id` ON DELETE CASCADE;');
     }
 
     /**

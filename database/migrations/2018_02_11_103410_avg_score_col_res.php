@@ -3,9 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-// use DB;
 
-class FixCardinalityOnCascade extends Migration
+class AvgScoreColRes extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +13,10 @@ class FixCardinalityOnCascade extends Migration
      */
     public function up()
     {
-        // DB::query('ALTER TABLE `menus` MODIFY `id_res` ON DELETE CASCADE;');
-        // DB::query('ALTER TABLE `reviews` MODIFY `id_user` ON DELETE CASCADE;');
-        // DB::query('ALTER TABLE `reviews` MODIFY `id_res` ON DELETE CASCADE;');
+      Schema::table('restaurants', function($table)
+      	{
+      		$table->double('avg_rating');
+      	});
     }
 
     /**
@@ -26,6 +26,9 @@ class FixCardinalityOnCascade extends Migration
      */
     public function down()
     {
-        //
+      Schema::table('restaurants', function($table)
+      	{
+      		$table->double('avg_rating');
+      	});
     }
 }
