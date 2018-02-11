@@ -17,12 +17,12 @@
          *
          * @var array
          */
-        protected $fillable = ['name', 'type', 'price', 'id_res'];
+        protected $fillable = ['id_res', 'name', 'type', 'price'];
 
         /**
          * The attributes excluded from the model's JSON form.
          *
          * @var array
          */
-        protected $hidden = ['password', 'api_token', 'remember_token'];
+        protected $hidden = [];
     }

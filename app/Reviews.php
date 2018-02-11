@@ -15,7 +15,7 @@
          *
          * @var array
          */
-        protected $fillable = ['review', 'score'];
+        protected $fillable = ['id_user', 'id_res', 'date', 'review', 'score'];
 
         /**
          * The attributes excluded from the model's JSON form.
