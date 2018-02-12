@@ -30,21 +30,19 @@
 			$router->get('restaurants/{id}', 'RestaurantsController@view');
 			$router->put('restaurants/{id}', 'RestaurantsController@edit');
 			$router->delete('restaurants/{id}', 'RestaurantsController@delete');
-			$router->get('restaurants', 'RestaurantsController@allUser');
+			$router->get('restaurants', 'RestaurantsController@allrestaurant');
 
 			//Routes for CRUD method on Menus object
 			$router->post('menus', 'MenusController@add');
 			$router->get('menus/{id}', 'MenusController@view');
 			$router->put('menus/{id}', 'MenusController@edit');
 			$router->delete('menus/{id}', 'MenusController@delete');
-			$router->get('menus', 'MenusController@allUser');
+			$router->get('menus', 'MenusController@allmenu');
 
 			//Routes for CRUD method on Reviews object
 			$router->post('reviews', 'ReviewsController@add');
 			$router->get('reviews/{id}', 'ReviewsController@view');
 			$router->put('reviews/{id}', 'ReviewsController@edit');
 			$router->delete('reviews/{id}', 'ReviewsController@delete');
-			$router->get('reviews', 'ReviewsController@allUser');
+			$router->get('reviews', 'ReviewsController@allreview');
 		});
-
-	

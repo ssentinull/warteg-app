@@ -3,6 +3,7 @@
 	use App\Restaurants;
 	use App\Menus;
 	use App\Reviews;
+	use App\Users;
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
@@ -23,14 +24,16 @@
 				{
 					$score = 0;
 					$price = 0;
+					$user_count = 0;
 
 					$restaurant = Restaurants::find($id);
 					$reviews = Reviews::where('id_res', $id)->get();
 					$menus = Menus::where('id_res', $id)->get();
-
 					foreach ($reviews as $rev) 
 						{
 							$score += $rev['score'];
+							$reviews[$user_count]->name = Users::find($rev->id_user)->name;  
+							$user_count++;
 						}
 
 					foreach ($menus as $menu)
@@ -43,7 +46,8 @@
 
 					$restaurant->avg_rating = $score;
 					$restaurant->avg_cost = $price;
-					$restaurant->review = $reviews;
+					$restaurant->menus = $menus;
+					$restaurant->reviews = $reviews;
 
 					return response()->json($restaurant);
 				}
