@@ -3,6 +3,7 @@
 	use App\Users;
 	use App\Reviews;
 	use App\Http\Controllers\Controller;
+	use Illuminate\Support\Facades\Hash;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
 	use DB;
@@ -13,9 +14,8 @@
 			public function add(Request $request)
 				{
 					$request['api_token'] = str_random(60);
-					$request['password'] = app('hash')->make($request['password']);
+					$request['password'] = app('hash')->make($request->password);
 					$user = Users::create($request->all());
-
 					return response()->json($user);
 				}
 
