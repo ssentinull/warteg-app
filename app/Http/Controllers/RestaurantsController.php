@@ -47,6 +47,7 @@
 					$restaurant->avg_rating = $score;
 					$restaurant->avg_cost = $price;
 					$restaurant->menus = $menus;
+					$restaurant->reviews = $reviews;
 
 					return response()->json($restaurant);
 				}
