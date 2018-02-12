@@ -16,6 +16,7 @@
 					$request['api_token'] = str_random(60);
 					$request['password'] = app('hash')->make($request->password);
 					$user = Users::create($request->all());
+
 					return response()->json($user);
 				}
 
