@@ -3,6 +3,7 @@
 	use App\Restaurants;
 	use App\Menus;
 	use App\Reviews;
+	use App\Users;
 	use App\Http\Controllers\Controller;
 	use Illuminate\Http\Request;
 	use Illuminate\Hashing\BcryptHasher;
