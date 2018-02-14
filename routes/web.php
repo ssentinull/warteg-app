@@ -24,7 +24,7 @@
 			$router->put('users/{id}', 'UsersController@edit');
 			$router->delete('users/{id}', 'UsersController@delete');
 			$router->get('users', 'UsersController@allUser');
-
+			
 			$router->post('auth', 'UsersController@auth');
 
 			//Routes for CRUD method on Restaurants object
@@ -42,9 +42,11 @@
 			$router->get('menus', 'MenusController@allmenu');
 
 			//Routes for CRUD method on Reviews object
-			$router->post('reviews', 'ReviewsController@add');
 			$router->get('reviews/{id}', 'ReviewsController@view');
-			$router->put('reviews/{id}', 'ReviewsController@edit');
-			$router->delete('reviews/{id}', 'ReviewsController@delete');
 			$router->get('reviews', 'ReviewsController@allreview');
+			$router->group(['prefix' => 'reviews', 'middleware' => 'auth'], function($router) {
+				$router->post('/', 'ReviewsController@add');
+				$router->put('/{id}', 'ReviewsController@edit');
+				$router->delete('/{id}', 'ReviewsController@delete');
+			});
 		});
