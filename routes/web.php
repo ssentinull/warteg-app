@@ -25,6 +25,8 @@
 			$router->delete('users/{id}', 'UsersController@delete');
 			$router->get('users', 'UsersController@allUser');
 
+			$router->post('auth', 'UsersController@auth');
+
 			//Routes for CRUD method on Restaurants object
 			$router->post('restaurants', 'RestaurantsController@add');
 			$router->get('restaurants/{id}', 'RestaurantsController@view');
