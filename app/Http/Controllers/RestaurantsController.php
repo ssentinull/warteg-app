@@ -27,7 +27,7 @@
 					$user_count = 0;
 
 					$restaurant = Restaurants::find($id);
-					$reviews = Reviews::where('id_res', $id)->get();
+					$reviews = Reviews::where('id_res', $id)->orderBy('updated_at', 'desc')->get();
 					$menus = Menus::where('id_res', $id)->get();
 					foreach ($reviews as $rev) 
 						{
