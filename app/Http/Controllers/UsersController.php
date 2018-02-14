@@ -1,6 +1,5 @@
 <?php namespace App\Http\Controllers;
 
-	use Log;
 	use App\Users;
 	use App\Reviews;
 	use App\Http\Controllers\Controller;
@@ -62,17 +61,18 @@
 
 					$user = DB::table('users')->where('email', $email)->first();
 					if(!$user) {
-						return response('email not found');
+						return response('Email Not Found', 422);
 					}
 
 					$isPasswordMatched = app('hash')->check($password, $user->password);
 					if(!$isPasswordMatched) {
-						return response('password incorrect');
+						return response('Password Incorrect', 422);
 					}
 					
 					$credentials['name'] = $user->name;
 					$credentials['email'] = $user->email;
-					$credentials['key'] = $user->api_token;
+					$credentials['token'] = $user->api_token;
+					$credentials['id'] = $user->id;
 
 					return response()->json($credentials);
 				}
