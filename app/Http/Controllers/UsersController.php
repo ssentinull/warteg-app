@@ -14,7 +14,7 @@
 			public function add(Request $request)
 				{
 					$request['api_token'] = str_random(60);
-					$request['password'] = app('hash')->make($request->password);
+					$request['password'] = app('hash')->make($request['password']);
 					$user = Users::create($request->all());
 
 					return response()->json($user);
@@ -52,6 +52,29 @@
 					// $users = Users::all();
 					$users = DB::table('users')->get();
 					return response()->json($users);
+				}
+
+			public function auth(Request $request) 
+				{
+					$email = $request->input('email');
+					$password = $request->input('password');
+
+					$user = DB::table('users')->where('email', $email)->first();
+					if(!$user) {
+						return response('Email Not Found', 422);
+					}
+
+					$isPasswordMatched = app('hash')->check($password, $user->password);
+					if(!$isPasswordMatched) {
+						return response('Password Incorrect', 422);
+					}
+					
+					$credentials['name'] = $user->name;
+					$credentials['email'] = $user->email;
+					$credentials['token'] = $user->api_token;
+					$credentials['id'] = $user->id;
+
+					return response()->json($credentials);
 				}
 		}
  ?>
